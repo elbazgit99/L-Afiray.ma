@@ -5,7 +5,7 @@ dotenv.config();
 
 // Create transporter for email sending
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // You can change this to other services like 'outlook', 'yahoo', etc.
+  service: 'gmail', // I can change this to other services like 'outlook', 'yahoo', etc.
   auth: {
     user: process.env.EMAIL_SERVICE,
     pass: process.env.SERVICE_EMAIL_PASSWORD
