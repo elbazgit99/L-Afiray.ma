@@ -55,7 +55,7 @@ interface Brand {
   imageFilename?: string;
 }
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ? `${import.meta.env.VITE_API_BASE_URL}/api` : '/api';
 
 const HomePage: React.FC = () => {
   const { isAuthenticated, user, logout } = useAuth();
@@ -354,7 +354,7 @@ const HomePage: React.FC = () => {
 
       // Record the sale in backend
       try {
-        await axios.post('http://localhost:5000/api/sales', {
+        await axios.post(`${API_BASE_URL}/sales`, {
           partId: selectedPart._id,
           buyerId: user?._id,
           price: selectedPart.price

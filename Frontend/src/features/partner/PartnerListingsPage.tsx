@@ -48,7 +48,7 @@ interface Brand {
 }
 
 // Base URL for backend API
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_BASE_URL ? `${import.meta.env.VITE_API_BASE_URL}/api` : '/api';
 
 const PartnerListingsPage: React.FC = () => {
   const location = useLocation(); // Retain useLocation if this page might be used in different paths (e.g., Moderator)

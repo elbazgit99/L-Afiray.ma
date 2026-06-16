@@ -1,13 +1,17 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ensure uploads directory exists with absolute path
-const uploadsDir = path.join(__dirname, '..', 'uploads');
+// Ensure uploads directory exists with absolute path (handles Vercel read-only filesystem)
+const uploadsDir = process.env.VERCEL 
+  ? path.join(os.tmpdir(), 'uploads') 
+  : path.join(__dirname, '..', 'uploads');
+
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
   console.log('Created uploads directory:', uploadsDir);

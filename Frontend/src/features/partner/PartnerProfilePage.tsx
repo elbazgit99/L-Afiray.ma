@@ -36,7 +36,8 @@ const PartnerProfilePage: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put('http://localhost:5000/api/users/profile-image', formData, {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const response = await axios.put(`${baseUrl}/api/users/profile-image`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

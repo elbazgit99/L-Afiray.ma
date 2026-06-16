@@ -89,7 +89,7 @@ interface CarPart {
   updatedAt?: string;
 }
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ? `${import.meta.env.VITE_API_BASE_URL}/api` : '/api';
 
 const ContentModerationPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'reports' | 'disputes' | 'audit' | 'featured'>('reports');

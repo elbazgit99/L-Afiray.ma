@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "/Frontend/dist/assets/:path*"
+    },
+    {
+      "source": "/((?!api|uploads|assets).*)",
+      "destination": "/Frontend/dist/index.html"
+    }
+  ]
+}

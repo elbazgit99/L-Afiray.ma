@@ -35,7 +35,8 @@ const PartnerSalesReportsPage: React.FC = () => {
   const fetchSalesData = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/sales/partner/${user._id}`);
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const res = await fetch(`${baseUrl}/api/sales/partner/${user._id}`);
       const sales = await res.json();
       // Group and aggregate sales by selectedPeriod
       let grouped = [];

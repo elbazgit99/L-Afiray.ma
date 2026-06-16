@@ -5,10 +5,22 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
     plugins: [react(), tailwindcss()],
-    base: process.env.VITE_BASE_PATH || "/L-Afiray.ma",
+    base: process.env.VITE_BASE_PATH || "/",
     resolve: {
         alias: {
             "@": fileURLToPath(new URL("./src", import.meta.url)),
         },
     },
+    server: {
+        proxy: {
+            "/api": {
+                target: "http://localhost:5000",
+                changeOrigin: true
+            },
+            "/uploads": {
+                target: "http://localhost:5000",
+                changeOrigin: true
+            }
+        }
+    }
 });   

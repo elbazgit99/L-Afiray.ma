@@ -4,7 +4,7 @@ export const getImageUrl = (imageUrl: string, imageFilename?: string, fallbackUr
   console.log('getImageUrl called with:', { imageUrl, imageFilename, fallbackUrl });
   
   if (imageFilename) {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
     const constructedUrl = `${baseUrl}/uploads/${imageFilename}`;
     console.log('Using imageFilename, constructed URL:', constructedUrl);
     return constructedUrl;
@@ -19,7 +19,7 @@ export const getImageUrl = (imageUrl: string, imageFilename?: string, fallbackUr
     }
     
     // If it's a relative path, construct the full URL
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
     const constructedUrl = `${baseUrl}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
     console.log('Using relative imageUrl, constructed URL:', constructedUrl);
     return constructedUrl;

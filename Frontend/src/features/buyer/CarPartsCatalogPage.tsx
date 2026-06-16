@@ -23,7 +23,7 @@ interface CarPart {
   model: { _id: string; name: string; }; // Populated model
 }
 
-const API_URL = 'http://localhost:5000/api'; // Ensure this matches your backend server's address
+const API_URL = import.meta.env.VITE_API_BASE_URL ? `${import.meta.env.VITE_API_BASE_URL}/api` : '/api'; // Ensure this matches your backend server's address
 
 // Helper to get image path for a part type
 const getPartImage = (type: string) => {

@@ -116,7 +116,8 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, onToggle }) => {
     try {
       console.log('Sending message to backend:', messageText);
       
-      const response = await fetch('http://localhost:5000/api/chat', {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const response = await fetch(`${baseUrl}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
